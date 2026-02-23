@@ -1,253 +1,79 @@
-# 🟨 O que é JavaScript?
-
-JavaScript é uma linguagem de programação de alto nível, feita para ser:
-
-✅ fácil de escrever
-✅ fácil de ler
-✅ usada tanto por iniciantes quanto por profissionais
-
-É a linguagem principal da Web.
-
-# 🟨 Onde podemos usar?
-
-JavaScript está em praticamente tudo:
-
-✅ Front-end (navegador)
-✅ Back-end (Node.js)
-✅ APIs e sistemas web
-✅ Apps mobile (React Native)
-✅ Desktop (Electron)
-✅ Jogos 2D/3D
-✅ Automação de tarefas
-
-🟨 Interpretado vs Compilado
-🔹 JavaScript → Interpretado
-
-Executa linha por linha durante a execução.
-
-🔹 Java → Compilado
-
-Compila todo o código primeiro, depois executa.
-
-👉 JS é mais rápido para testar e aprender.
-
-# 🟨 Variáveis
-
-Servem para armazenar dados na memória.
-
-🔹 var (evitar)
-var nome = "Dezinho";
-
-
-❌ Escopo global
-❌ Pode causar bugs
-
-🔹 let (recomendado)
-let idade = 20;
-
-
-✅ Pode mudar
-✅ Escopo de bloco (mais seguro)
-
-🔹 const
-const PI = 3.14;
-
-
-✅ Não pode mudar
-Use para valores fixos.
-
-# 🟨 Regras para nomes
-
-✔ pode ter números (não no início)
-✔ pode usar _
-✔ case sensitive
-
-nome ≠ Nome
-
-# 🟨 Tipos de Dados
-🔹 String
-let nome = "André";
-
-🔹 Number
-let idade = 21;
-let altura = 1.75;
-
-🔹 Boolean
-let ativo = true;
-
-🔹 Object
-let pessoa = {
-  nome: "Dezinho",
-  idade: 20
-};
-
-🔹 Array (lista)
-let notas = [7, 8, 9];
-
-# 🟨 Operadores Aritméticos
-Operador	Função
-+	soma
--	subtração
-*	multiplicação
-/	divisão
-%	resto
-**	potência
-++	incremento
---	decremento
-# 🟨 Operadores de Atribuição
-a += 2
-a -= 2
-a *= 2
-a /= 2
-a %= 2
-a **= 2
-
-# 🟨 Operadores Lógicos
-Operador	Significado
-&&	E
-	
-!	NÃO
-??	valor padrão
-?:	ternário
-
-Exemplo:
-
-idade >= 18 ? "maior" : "menor";
-
-# 🟨 Operadores Relacionais
-
-⚠️ Prefira sempre ===
-
-Operador	Uso
-==	igual (converte tipo)
-===	estritamente igual
-!=	diferente
-> < >= <=	comparação
-# 🟨 Condicionais
-if / else
-if (idade >= 18) {
-  console.log("Maior");
-} else {
-  console.log("Menor");
-}
-
-switch
-switch(opcao){
-  case 1:
-    console.log("Cadastrar");
-    break;
-  case 2:
-    console.log("Listar");
-    break;
-  default:
-    console.log("Inválido");
-}
-
-
-👉 Use quando tiver muitas opções para a mesma variável.
-
-# 🟨 Escopo
-Global
-
-Acessível em todo o código.
-
-Local (bloco)
-
-Só funciona dentro das { }.
-
-if(true){
-  let x = 10;
-}
-
-
-Aqui x só existe dentro do bloco.
-
-# 🟨 Loops (Repetição)
-🔹 for (quando sabe quantas vezes)
-for (let i = 0; i < 5; i++) {
-  console.log(i);
-}
-
-
-Estrutura:
-
-for(início; condição; incremento)
-
-🔹 while (enquanto for verdadeiro)
-let i = 0;
-
-while (i < 5) {
-  console.log(i);
-  i++;
-}
-
-
-⚠ cuidado com loop infinito
-
-🔹 do...while (executa 1x garantido)
-do {
-  console.log("Executa primeiro");
-} while(condicao);
-
-# 🟨 Arrays
-Criar
-let frutas = ["banana", "maçã"];
-
-Acessar
-console.log(frutas[0]);
-
-
-⚠ começa no índice 0
-
-Percorrer
-for (let fruta of frutas) {
-  console.log(fruta);
-}
-
-# 🟨 Funções
-Normal
-function soma(a, b){
-  return a + b;
-}
-
-Anônima
-const soma = function(a,b){
-  return a + b;
-};
-
-Arrow
-const soma = (a,b) => a + b;
-
-
-👉 Mais usada hoje em dia.
-
-# 🟨 Objetos
-
-Agrupam dados em chave: valor
-
-let aluno = {
-  nome: "Dezinho",
-  idade: 20
-};
-
-Acessar
-aluno.nome
-
-
-👉 chamado de dot walking
-
-# 🟨 Exemplo Completo
-let notas = [7, 6, 9, 8];
-let soma = 0;
-
-for (let nota of notas) {
-  soma += nota;
-}
-
-let media = soma / notas.length;
-
-if (media >= 7) {
-  console.log("Aprovado!", media);
-} else {
-  console.log("Reprovado!", media);
-}
+# Rocket-Program-Alpar
+
+Repositório com projetos de prática em **HTML, CSS e JavaScript**, organizados por desafios e mini-sites.
+
+## Estrutura de pastas
+
+```text
+Rocket-Program-Alpar/
+├─ index.html                  # Página principal (portfólio)
+├─ assets/
+│  └─ style.css               # Estilos globais da página principal
+├─ blog/                      # Área reservada para o blog (atualmente vazia)
+├─ cafeteria/
+│  ├─ index.html              # Página inicial da cafeteria
+│  ├─ menu.html               # Página de cardápio
+│  ├─ contato.html            # Página de contato
+│  └─ assets/
+│     └─ cafeteria.css        # Estilos do projeto cafeteria
+├─ card/
+│  ├─ index.html              # Cartão de perfil
+│  └─ assets/
+│     └─ card.css             # Estilos do card
+├─ Desafios/
+│  ├─ desafio1.js
+│  ├─ desafio2.js
+│  ├─ desafio3.js
+│  ├─ desafio4.js
+│  └─ desafioCintia.js        # Exercícios JavaScript
+├─ empresa-table/
+│  ├─ index.html              # Site com layout baseado em tabelas
+│  └─ assets/
+│     └─ empresa-table.css
+└─ podcast/
+   ├─ index.html              # Página do podcast
+   └─ assets/
+      └─ podcast.css
+```
+
+## Como executar
+
+Como são páginas estáticas, você pode:
+
+1. Abrir `index.html` diretamente no navegador, ou
+2. Usar a extensão **Live Server** no VS Code para navegar entre os projetos.
+
+## Como funciona o blog
+
+### Estado atual
+
+No momento, a pasta `blog/` está criada, mas **sem arquivos**.
+
+Isso significa que:
+
+- ainda não existe uma página principal do blog (ex.: `blog/index.html`),
+- não há estilos/scripts próprios do blog,
+- e o blog ainda não está linkado na navegação da página principal.
+
+### Fluxo esperado (quando implementado)
+
+A estrutura mais simples para o blog pode ser:
+
+```text
+blog/
+├─ index.html          # Lista de posts
+├─ post-1.html         # Página de um post
+├─ post-2.html
+└─ assets/
+   └─ blog.css         # Estilos do blog
+```
+
+Funcionamento:
+
+1. `blog/index.html` lista os artigos;
+2. cada item aponta para uma página de post;
+3. o usuário entra no blog pelo link adicionado em `index.html` (página principal do portfólio).
+
+---
+
+Se quiser, eu já posso criar essa estrutura inicial do blog (com `blog/index.html`, `blog/assets/blog.css` e 1 post de exemplo) para deixar tudo funcionando agora.
