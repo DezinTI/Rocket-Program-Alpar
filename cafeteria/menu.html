@@ -9,14 +9,23 @@
 </head>
 
 <body>
-    <header>
-       <h1>Café Tatuquas</h1>
-        <p><a href="assets/logotatuquas.png">Logo do Café Tatuquas</a></p>
+    <header class="site-header">
+        <h1>Café Tatuquas</h1>
+        <a href="index.html" class="logo-link" aria-label="Página inicial do Café Tatuquas">
+            <img src="assets/logotatuquas.png" alt="Logo do Café Tatuquas" class="site-logo">
+        </a>
         <p>Menu da cafeteria</p>
-        <p><a href="index.html">Voltar para Página Principal</a></p>
+        <p><a href="index.html" class="header-link">Voltar para Página Principal</a></p>
     </header>
 
-    <main>
+    <nav class="site-menu">
+        <a href="index.html">Início</a>
+        <a href="menu.html">Cardápio</a>
+        <a href="contato.html">Contato</a>
+        <a href="../index.html">Portfólio</a>
+    </nav>
+
+    <main class="site-content">
         <section>
             <h2>Bebidas</h2>
             <ul>
@@ -139,7 +148,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <p><a href="contato.html">Fale Conosco</a> | <a href="../index.html">Voltar para o portfólio</a></p>
     </footer>
 </body>

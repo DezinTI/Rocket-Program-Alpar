@@ -3,10 +3,70 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 20px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-areas:
+        "header header"
+        "menu content"
+        "footer footer";
+    gap: 20px;
+}
+
+.site-header {
+    grid-area: header;
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.site-header h1 {
+    margin: 0 0 8px 0;
+    color: #333;
+}
+
+.site-header p {
+    margin: 0;
+    color: #666;
+}
+
+.site-menu {
+    grid-area: menu;
+    background-color: #007bff;
+    border-radius: 12px;
+    padding: 16px;
+    align-self: start;
+}
+
+.site-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.site-menu a:hover {
+    background-color: #0056b3;
+}
+
+.site-content {
+    grid-area: content;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+}
+
+.site-footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    padding: 16px;
 }
 
 .card {
@@ -75,4 +135,15 @@ body {
 
 .social-link:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "menu"
+            "content"
+            "footer";
+    }
 }
