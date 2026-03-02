@@ -11,6 +11,7 @@ body {
         "menu content"
         "footer footer";
     gap: 20px;
+    animation: fadeIn 0.8s ease;
 }
 
 .site-header {
@@ -20,6 +21,7 @@ body {
     border-radius: 10px;
     padding: 24px;
     text-align: center;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.22);
 }
 
 .site-header h1,
@@ -37,13 +39,26 @@ body {
     background-color: white;
     border-radius: 10px;
     padding: 16px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     align-self: start;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.site-menu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.26);
 }
 
 .site-menu a {
     display: block;
     margin-bottom: 8px;
+    opacity: 0.72;
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.site-menu a:hover {
+    opacity: 1;
+    transform: translateX(3px);
 }
 
 .site-content {
@@ -56,12 +71,20 @@ section {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: riseUp 0.5s ease;
+}
+
+section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.14);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 table td {
@@ -85,6 +108,10 @@ table tr:hover {
     background-color: #f0f0f0;
 }
 
+table tbody tr td:first-child {
+    font-weight: bold;
+}
+
 .site-footer {
     grid-area: footer;
     background-color: #333;
@@ -105,17 +132,24 @@ a {
     padding: 5px 10px;
     display: inline-block;
     border-radius: 3px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, opacity 0.25s;
+    opacity: 0.72;
 }
 
 a:hover {
     background-color: #007bff;
     color: white;
+    opacity: 1;
 }
 
 h1, h2, h3 {
     color: #333;
     margin: 20px 0 10px 0;
+}
+
+h2::before {
+    content: "◆ ";
+    color: #007bff;
 }
 
 p {
@@ -132,11 +166,22 @@ li {
     margin-bottom: 8px;
 }
 
+li:nth-child(odd) {
+    color: #444;
+}
+
 form input, form textarea {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 10px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+    outline: none;
 }
 
 form input[type="submit"] {
@@ -146,10 +191,34 @@ form input[type="submit"] {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    opacity: 0.82;
+    transition: background-color 0.25s, opacity 0.25s, transform 0.25s;
 }
 
 form input[type="submit"]:hover {
     background-color: #0056b3;
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes riseUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 blockquote {
