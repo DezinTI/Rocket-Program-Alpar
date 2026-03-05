@@ -73,7 +73,3 @@ Funcionamento:
 1. `blog/index.html` lista os artigos;
 2. cada item aponta para uma página de post;
 3. o usuário entra no blog pelo link adicionado em `index.html` (página principal do portfólio).
-
----
-
-Se quiser, eu já posso criar essa estrutura inicial do blog (com `blog/index.html`, `blog/assets/blog.css` e 1 post de exemplo) para deixar tudo funcionando agora.
