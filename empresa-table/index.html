@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DezinTI - Soluções em Tecnologia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/empresa-table.css">
 </head>
 
-<body>
-    <header class="site-header">
-        <h1>DezinTI</h1>
-        <p>Sistemas e Manutenção de PCs e Celulares</p>
+<body class="bg-body-secondary">
+    <header class="site-header shadow-sm">
+        <h1 class="display-6 fw-bold">DezinTI</h1>
+        <p class="lead">Sistemas e Manutenção de PCs e Celulares</p>
     </header>
 
     <nav class="site-menu">
@@ -42,32 +44,34 @@
 
         <section id="servicos">
             <h2>Serviços Técnicos</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Serviço</th>
-                        <th>Descrição</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Manutenção de PCs</td>
-                        <td>Limpeza, troca de peças, otimização</td>
-                    </tr>
-                    <tr>
-                        <td>Conserto de Celulares</td>
-                        <td>Tela, bateria, carregador, software</td>
-                    </tr>
-                    <tr>
-                        <td>Redes e Internet</td>
-                        <td>Configuração de Wi-Fi e redes locais</td>
-                    </tr>
-                    <tr>
-                        <td>Suporte Remoto</td>
-                        <td>Ajuda técnica sem sair de casa</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Serviço</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Manutenção de PCs</td>
+                            <td>Limpeza, troca de peças, otimização</td>
+                        </tr>
+                        <tr>
+                            <td>Conserto de Celulares</td>
+                            <td>Tela, bateria, carregador, software</td>
+                        </tr>
+                        <tr>
+                            <td>Redes e Internet</td>
+                            <td>Configuração de Wi-Fi e redes locais</td>
+                        </tr>
+                        <tr>
+                            <td>Suporte Remoto</td>
+                            <td>Ajuda técnica sem sair de casa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="sobre">
@@ -93,11 +97,11 @@
             <div>
                 <h3>Formulário de Orçamento</h3>
                 <form>
-                    <p>Nome:<br><input type="text" name="nome" size="30"></p>
-                    <p>Telefone:<br><input type="tel" name="telefone" size="30"></p>
-                    <p>Serviço:<br><input type="text" name="servico" size="30"></p>
-                    <p>Descrição:<br><textarea name="descricao" rows="4" cols="30"></textarea></p>
-                    <p><input type="submit" value="Solicitar Orçamento"></p>
+                    <p>Nome:<br><input type="text" name="nome" size="30" class="form-control"></p>
+                    <p>Telefone:<br><input type="tel" name="telefone" size="30" class="form-control"></p>
+                    <p>Serviço:<br><input type="text" name="servico" size="30" class="form-control"></p>
+                    <p>Descrição:<br><textarea name="descricao" rows="4" cols="30" class="form-control"></textarea></p>
+                    <p><input type="submit" value="Solicitar Orçamento" class="btn btn-primary"></p>
                 </form>
             </div>
         </section>

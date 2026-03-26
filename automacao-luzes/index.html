@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automacao de Luzes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+    <main class="container py-5">
+        <h1 class="display-6 fw-bold">Central de Luzes</h1>
+        <p class="text-muted">Clique nos botoes para ligar ou desligar os comodos.</p>
+
+        <div id="mensagem" class="alert alert-info">Aguardando acao...</div>
+
+        <section class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div id="comodo-quarto" class="room">Quarto</div>
+            </div>
+            <div class="col-md-4">
+                <div id="comodo-sala" class="room">Sala</div>
+            </div>
+            <div class="col-md-4">
+                <div id="comodo-cozinha" class="room">Cozinha</div>
+            </div>
+        </section>
+
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-warning" data-acao="ligar" data-comodo="quarto">Ligar quarto</button>
+            <button class="btn btn-outline-secondary" data-acao="desligar" data-comodo="quarto">Desligar quarto</button>
+            <button class="btn btn-warning" data-acao="ligar" data-comodo="sala">Ligar sala</button>
+            <button class="btn btn-outline-secondary" data-acao="desligar" data-comodo="sala">Desligar sala</button>
+            <button class="btn btn-warning" data-acao="ligar" data-comodo="cozinha">Ligar cozinha</button>
+            <button class="btn btn-outline-secondary" data-acao="desligar" data-comodo="cozinha">Desligar
+                cozinha</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
