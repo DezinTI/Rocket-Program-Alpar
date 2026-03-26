@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+#status {
+  padding: 12px;
+  background: #dbeafe;
+  border-radius: 8px;
+}
+
+.acoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.acoes .btn {
+  min-height: 42px;
+  font-weight: 600;
+}
+
+.casa {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.comodo {
+  min-height: 120px;
+  border-radius: 12px;
+  border: 2px solid #94a3b8;
+  display: grid;
+  place-items: center;
+  background: #e2e8f0;
+  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.comodo.acesa {
+  background: #fde68a;
+  border-color: #f59e0b;
+  transform: translateY(-2px);
+}

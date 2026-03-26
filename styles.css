@@ -1,0 +1,15 @@
+body {
+  background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 40%, #f8f9fa 100%);
+}
+
+.hero-section {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: min(320px, 100%);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}

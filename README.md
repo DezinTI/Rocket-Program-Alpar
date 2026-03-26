@@ -1,147 +1,138 @@
-🚀 Rocket Program - Alpar
-📚 Instrutor: Felipe Ruffo
-💻 JavaScript Básico
-📅 Dia 09/02
+# 🟨 O que é JavaScript?
 
-Iniciando os estudos em JavaScript básico, com aulas via YouTube.
+JavaScript é uma linguagem de programação de alto nível, feita para ser:
 
-🟨 O que é JavaScript?
+✅ fácil de escrever
+✅ fácil de ler
+✅ usada tanto por iniciantes quanto por profissionais
 
-JavaScript é uma linguagem de alto nível, projetada para ser:
+É a linguagem principal da Web.
 
-fácil de escrever
+# 🟨 Onde podemos usar?
 
-fácil de ler
+JavaScript está em praticamente tudo:
 
-usada por diferentes pessoas
+✅ Front-end (navegador)
+✅ Back-end (Node.js)
+✅ APIs e sistemas web
+✅ Apps mobile (React Native)
+✅ Desktop (Electron)
+✅ Jogos 2D/3D
+✅ Automação de tarefas
 
-🔹 Onde é utilizado?
+🟨 Interpretado vs Compilado
+🔹 JavaScript → Interpretado
 
-✅ Front-end (navegador / páginas interativas)
-✅ Back-end com Node.js
-✅ APIs, sistemas web e aplicações
+Executa linha por linha durante a execução.
 
-🔹 Interpretação vs Compilação
-JavaScript → Interpretado
-
-Executa linha por linha, durante a execução.
-
-Java → Compilado
+🔹 Java → Compilado
 
 Compila todo o código primeiro, depois executa.
 
-🟨 Declaração de Variáveis
-🔹 var
+👉 JS é mais rápido para testar e aprender.
 
-Cria variáveis que podem mudar
-❌ Escopo global (menos seguro)
+# 🟨 Variáveis
 
+Servem para armazenar dados na memória.
+
+🔹 var (evitar)
 var nome = "Dezinho";
 
-🔹 let
 
-Cria variáveis que podem mudar
-✅ Respeita escopo de bloco (RECOMENDADO)
+❌ Escopo global
+❌ Pode causar bugs
 
+🔹 let (recomendado)
 let idade = 20;
 
+
+✅ Pode mudar
+✅ Escopo de bloco (mais seguro)
+
 🔹 const
-
-Valor não pode ser alterado
-
 const PI = 3.14;
 
-🟨 Tipos de Variáveis
-🔹 String (texto)
-let nome = "André";
-let cidade = 'Curitiba';
 
-🔹 Number (números)
+✅ Não pode mudar
+Use para valores fixos.
+
+# 🟨 Regras para nomes
+
+✔ pode ter números (não no início)
+✔ pode usar _
+✔ case sensitive
+
+nome ≠ Nome
+
+# 🟨 Tipos de Dados
+🔹 String
+let nome = "André";
+
+🔹 Number
 let idade = 21;
 let altura = 1.75;
 
-🔹 Boolean (lógico)
+🔹 Boolean
 let ativo = true;
-let logado = false;
 
-🔹 Object (objeto)
-
-Coleção de dados relacionados
-
-let endereco = {
-  cep: "12345-000",
-  rua: "Rua A",
-  numero: 10
+🔹 Object
+let pessoa = {
+  nome: "Dezinho",
+  idade: 20
 };
 
-🔹 Array / Vetor / Lista
+🔹 Array (lista)
+let notas = [7, 8, 9];
 
-Guarda vários valores
-
-let numeros = [10, 20, 30, 40];
-
-🟨 Operadores Aritméticos
-Operador	Função	Exemplo
-+	adição	2 + 3 = 5
--	subtração	10 - 4 = 6
-*	multiplicação	6 * 7 = 42
-/	divisão	9 / 3 = 3
-%	resto	10 % 3 = 1
-**	potência	2 ** 3 = 8
-++	incremento	x++
---	decremento	y--
-🟨 Operadores Lógicos
-Operador	Significado	Exemplo
-&&	E	true && false
-||	OU	false || true
-!	NÃO	!true
-??	valor padrão	null ?? "padrao"
-?:	ternário	idade >= 18 ? "maior" : "menor"
-🟨 Operadores Relacionais (comparação)
+# 🟨 Operadores Aritméticos
 Operador	Função
++	soma
+-	subtração
+*	multiplicação
+/	divisão
+%	resto
+**	potência
+++	incremento
+--	decremento
+# 🟨 Operadores de Atribuição
+a += 2
+a -= 2
+a *= 2
+a /= 2
+a %= 2
+a **= 2
+
+# 🟨 Operadores Lógicos
+Operador	Significado
+&&	E
+	
+!	NÃO
+??	valor padrão
+?:	ternário
+
+Exemplo:
+
+idade >= 18 ? "maior" : "menor";
+
+# 🟨 Operadores Relacionais
+
+⚠️ Prefira sempre ===
+
+Operador	Uso
 ==	igual (converte tipo)
 ===	estritamente igual
 !=	diferente
-!==	estritamente diferente
->	maior
-<	menor
->=	maior ou igual
-<=	menor ou igual
-⚠️ Dica
-
-Prefira sempre:
-
-===
-
-
-(evita bugs de conversão de tipo)
-
-🟨 Operadores de Atribuição
-Operador	Exemplo	Resultado
-=	a = 5	atribui
-+=	a += 3	soma
--=	a -= 2	subtrai
-*=	a *= 2	multiplica
-/=	a /= 2	divide
-%=	a %= 3	resto
-**=	a **= 3	potência
-&&=	lógico E	
-||=	lógico OU	
-??=	valor padrão	
-🟨 Condicionais
+> < >= <=	comparação
+# 🟨 Condicionais
 if / else
-let idade = 18;
-
 if (idade >= 18) {
-  console.log("Maior de idade");
+  console.log("Maior");
 } else {
-  console.log("Menor de idade");
+  console.log("Menor");
 }
 
 switch
-let opcao = 2;
-
-switch (opcao) {
+switch(opcao){
   case 1:
     console.log("Cadastrar");
     break;
@@ -152,13 +143,37 @@ switch (opcao) {
     console.log("Inválido");
 }
 
-🟨 Loops (Repetição)
+
+👉 Use quando tiver muitas opções para a mesma variável.
+
+# 🟨 Escopo
+Global
+
+Acessível em todo o código.
+
+Local (bloco)
+
+Só funciona dentro das { }.
+
+if(true){
+  let x = 10;
+}
+
+
+Aqui x só existe dentro do bloco.
+
+# 🟨 Loops (Repetição)
 🔹 for (quando sabe quantas vezes)
 for (let i = 0; i < 5; i++) {
   console.log(i);
 }
 
-🔹 while (repete enquanto for verdadeiro)
+
+Estrutura:
+
+for(início; condição; incremento)
+
+🔹 while (enquanto for verdadeiro)
 let i = 0;
 
 while (i < 5) {
@@ -166,31 +181,62 @@ while (i < 5) {
   i++;
 }
 
-🔹 do while (executa pelo menos 1 vez)
-let opcao;
 
+⚠ cuidado com loop infinito
+
+🔹 do...while (executa 1x garantido)
 do {
-  opcao = Number(prompt("Digite 0 para sair"));
-} while (opcao !== 0);
+  console.log("Executa primeiro");
+} while(condicao);
 
-🟨 Trabalhando com Arrays
+# 🟨 Arrays
 Criar
-let notas = [7, 8, 9];
+let frutas = ["banana", "maçã"];
 
 Acessar
-console.log(notas[0]);
+console.log(frutas[0]);
 
-Percorrer (for tradicional)
-for (let i = 0; i < notas.length; i++) {
-  console.log(notas[i]);
+
+⚠ começa no índice 0
+
+Percorrer
+for (let fruta of frutas) {
+  console.log(fruta);
 }
 
-Percorrer (for-of)
-for (let nota of notas) {
-  console.log(nota);
+# 🟨 Funções
+Normal
+function soma(a, b){
+  return a + b;
 }
 
-🟨 Exemplo Completo (misturando tudo)
+Anônima
+const soma = function(a,b){
+  return a + b;
+};
+
+Arrow
+const soma = (a,b) => a + b;
+
+
+👉 Mais usada hoje em dia.
+
+# 🟨 Objetos
+
+Agrupam dados em chave: valor
+
+let aluno = {
+  nome: "Dezinho",
+  idade: 20
+};
+
+Acessar
+aluno.nome
+
+
+👉 chamado de dot walking
+
+# 🟨 Exemplo Completo
 let notas = [7, 6, 9, 8];
 let soma = 0;
 
@@ -201,26 +247,7 @@ for (let nota of notas) {
 let media = soma / notas.length;
 
 if (media >= 7) {
-  console.log("Aprovado! Média:", media);
+  console.log("Aprovado!", media);
 } else {
-  console.log("Reprovado! Média:", media);
+  console.log("Reprovado!", media);
 }
-
-# Trabalhando com Loops
-
-- Loop (FOR) ex: for(let i = 0; < 5; i++){
-        console.log(i);
-}
-
-inicia a váriavel que controla o fluxo do loop
-define a operação lógica que vai maneter o loop funcionando enquanto for verdadeiro
-normalmente incrementa ou decremente a váriavel, até retornar false
-
-- Loop (WHILE) ex: let i = 0;
-
-while (i < 6) {
-    console.log("Contagem: " + i);
-    i++;
-}
-
-while = enquanto, formando  um parametro
