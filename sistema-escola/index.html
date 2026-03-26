@@ -12,7 +12,7 @@
 
 <body class="escola-bg">
     <main class="container py-5">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-4">
             <div class="col-md-7 col-lg-5">
                 <section class="card shadow-sm border-0 rounded-4">
                     <div class="card-body p-4">
@@ -45,9 +45,61 @@
                 </section>
             </div>
         </div>
+
+        <div class="row justify-content-center" id="desafio5" ng-app="desafio5App" ng-controller="AppController">
+            <div class="col-lg-9">
+                <section class="card shadow-sm border-0 rounded-4">
+                    <div class="card-body p-4">
+                        <h2 class="h4 fw-bold mb-2">Desafio 5 - AngularJS</h2>
+                        <p class="text-muted mb-4">Escopos aninhados com filtros em tempo real para usuarios.</p>
+
+                        <div class="row g-3" ng-controller="ListaUsuariosController">
+                            <div class="col-md-6">
+                                <label for="filtro" class="form-label">Buscar por nome ou tipo</label>
+                                <input id="filtro" type="text" class="form-control" ng-model="filtro"
+                                    placeholder="Ex: ana ou professor">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="filtroTipo" class="form-label">Filtrar por tipo</label>
+                                <select id="filtroTipo" class="form-select" ng-model="filtroTipo">
+                                    <option value="">Todos</option>
+                                    <option value="Aluno">Aluno</option>
+                                    <option value="Professor">Professor</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12 d-flex flex-wrap gap-2 mt-1">
+                                <span class="badge text-bg-primary">Total Alunos: {{ (usuarios |
+                                    filter:{tipo:'Aluno'}).length }}</span>
+                                <span class="badge text-bg-success">Total Professores: {{ (usuarios |
+                                    filter:{tipo:'Professor'}).length }}</span>
+                                <span class="badge text-bg-dark">Total Geral: {{ usuarios.length }}</span>
+                            </div>
+
+                            <div class="col-12">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                                        ng-repeat="usuario in usuarios | filter:filtro | filter:{ tipo: filtroTipo }">
+                                        <div>
+                                            <strong>{{ usuario.nome | uppercase }}</strong>
+                                            <div class="text-muted small">Tipo: {{ usuario.tipo }}</div>
+                                        </div>
+                                        <span class="badge text-bg-secondary mt-2 mt-md-0">
+                                            Cadastro: {{ usuario.dataCadastro | date:'dd/MM/yyyy' }}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </main>
 
     <script src="usuarios.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <script src="angular-desafio5.js"></script>
     <script src="login.js"></script>
 </body>
 
