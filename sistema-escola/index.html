@@ -53,6 +53,30 @@
                         <h2 class="h4 fw-bold mb-2">Desafio 5 - AngularJS</h2>
                         <p class="text-muted mb-4">Escopos aninhados com filtros em tempo real para usuarios.</p>
 
+                        <div class="app-toast mb-3" ng-if="notificacao.visivel"
+                            ng-class="{ 'app-toast-success': notificacao.tipo === 'success', 'app-toast-danger': notificacao.tipo === 'danger' }">
+                            {{ notificacao.mensagem }}
+                        </div>
+
+                        <form class="row g-3 mb-4" ng-submit="adicionarUsuario()">
+                            <div class="col-md-6">
+                                <label for="novoNome" class="form-label">Nome</label>
+                                <input id="novoNome" type="text" class="form-control" ng-model="novoUsuario.nome"
+                                    placeholder="Digite o nome" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="novoTipo" class="form-label">Tipo</label>
+                                <select id="novoTipo" class="form-select" ng-model="novoUsuario.tipo">
+                                    <option value="Aluno">Aluno</option>
+                                    <option value="Professor">Professor</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 d-grid">
+                                <label class="form-label d-none d-md-block">&nbsp;</label>
+                                <button type="submit" class="btn btn-primary">Adicionar</button>
+                            </div>
+                        </form>
+
                         <div class="row g-3" ng-controller="ListaUsuariosController">
                             <div class="col-md-6">
                                 <label for="filtro" class="form-label">Buscar por nome ou tipo</label>
@@ -87,6 +111,10 @@
                                         <span class="badge text-bg-secondary mt-2 mt-md-0">
                                             Cadastro: {{ usuario.dataCadastro | date:'dd/MM/yyyy' }}
                                         </span>
+                                        <button type="button" class="btn btn-outline-danger btn-sm mt-2 mt-md-0"
+                                            ng-click="removerUsuario(usuario)">
+                                            Remover
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
