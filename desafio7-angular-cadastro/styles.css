@@ -1,0 +1,165 @@
+:root {
+  --bg: #f3f7fa;
+  --surface: #ffffff;
+  --primary: #1f6aa5;
+  --primary-dark: #164f7b;
+  --text: #1f2a37;
+  --danger: #b3261e;
+  --ok: #13795b;
+  --border: #cdd7e1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #e9f3fb, var(--bg));
+  color: var(--text);
+}
+
+.container {
+  max-width: 760px;
+  margin: 32px auto;
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 10px 26px rgba(16, 44, 67, 0.08);
+}
+
+h1 {
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: #4b5563;
+}
+
+form {
+  margin-top: 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input,
+select {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(31, 106, 165, 0.16);
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.error {
+  color: var(--danger);
+}
+
+.loading {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #164f7b;
+  font-weight: 600;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #9fc4df;
+  border-top-color: #1f6aa5;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.toast {
+  margin-top: 16px;
+  background: #d8f3e7;
+  color: var(--ok);
+  border: 1px solid #8fd2b8;
+  border-radius: 10px;
+  padding: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.toast.show {
+  animation: toast-in 0.35s ease forwards;
+}
+
+@keyframes toast-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lista {
+  margin-top: 28px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    margin: 16px;
+    padding: 20px;
+  }
+}

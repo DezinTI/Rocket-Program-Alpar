@@ -1,0 +1,140 @@
+:root {
+  --bg: #f2f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --ok: #1f8f5f;
+  --bad: #cc2b35;
+  --border: #d2dae5;
+  --focus: #145f98;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: linear-gradient(145deg, #ecf7ff 0%, #f8f9fb 45%, #eef6f1 100%);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: min(100%, 560px);
+  background: var(--card);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 34px rgba(32, 50, 69, 0.1);
+}
+
+h1 {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 8px 0 20px;
+  color: #475569;
+}
+
+form {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+label {
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 12px;
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  border-color: var(--focus);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(20, 95, 152, 0.15);
+}
+
+input.valid {
+  border-color: var(--ok);
+}
+
+input.invalid {
+  border-color: var(--bad);
+}
+
+.message {
+  min-height: 18px;
+  font-size: 0.92rem;
+}
+
+.message.valid {
+  color: var(--ok);
+}
+
+.message.invalid {
+  color: var(--bad);
+}
+
+button {
+  margin-top: 4px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: #145f98;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0f4b78;
+}
+
+.toast {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+.toast.show {
+  animation: toast-in 0.25s ease forwards;
+}
+
+.toast.success {
+  background: #d7f2e6;
+  color: #0f6b45;
+  border: 1px solid #8fd2b8;
+}
+
+.toast.error {
+  background: #fbe2e4;
+  color: #8a1c25;
+  border: 1px solid #ef9ea6;
+}
+
+@keyframes toast-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
