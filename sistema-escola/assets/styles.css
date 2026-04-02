@@ -1,0 +1,16 @@
+body.escola-bg {
+  background: linear-gradient(145deg, #e8efff, #f8fbff);
+  min-height: 100vh;
+}
+
+.card {
+  backdrop-filter: blur(3px);
+}
+
+.perfil-item {
+  background: #f3f7ff;
+  border: 1px solid #d8e5ff;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+}

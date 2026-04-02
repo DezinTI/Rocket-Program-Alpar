@@ -1,0 +1,13 @@
+# .NET build artifacts
+**/bin/
+**/obj/
+
+# VS/VS Code caches
+.vs/
+
+# Local database and generated app data for API
+WhatEeverDex/Api Crud/*.db
+WhatEeverDex/Api Crud/App_Data/
+
+# Optional local publish artifacts
+**/publish/

@@ -1,0 +1,232 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-areas:
+        "header header"
+        "menu content"
+        "footer footer";
+    gap: 20px;
+    animation: fadeIn 0.8s ease;
+}
+
+.site-menu {
+    grid-area: menu;
+    background-color: #111;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    align-self: start;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.site-menu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.site-menu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-weight: bold;
+    opacity: 0.72;
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.site-menu a:hover {
+    text-decoration: underline;
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+.site-menu a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.site-header {
+    grid-area: header;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.site-header h1 {
+    margin: 0;
+}
+
+.site-content {
+    grid-area: content;
+    max-width: 1200px;
+    width: 100%;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: riseUp 0.5s ease;
+}
+
+section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+}
+
+section h2 {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 60px;
+    height: 2px;
+    background-color: #333;
+}
+
+article {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid #007bff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+}
+
+article h3 {
+    color: #007bff;
+    margin-top: 0;
+}
+
+article h3::before {
+    content: "• ";
+}
+
+article p {
+    color: #666;
+    line-height: 1.6;
+}
+
+article a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.72;
+    transition: opacity 0.25s;
+}
+
+article a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+#habilidades ul, #contato p {
+    list-style: none;
+    padding: 0;
+}
+
+#habilidades li {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    margin: 5px 0;
+    border-radius: 4px;
+    display: inline-block;
+    transition: transform 0.25s;
+}
+
+#habilidades li:hover {
+    transform: scale(1.03);
+}
+
+#habilidades li:nth-child(even) {
+    background-color: #005fc5;
+}
+
+#contato a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 15px;
+    opacity: 0.72;
+    transition: opacity 0.25s;
+}
+
+#contato a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+.site-footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.site-footer a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.72;
+    transition: opacity 0.25s;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes riseUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 900px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "menu"
+            "content"
+            "footer";
+    }
+}
