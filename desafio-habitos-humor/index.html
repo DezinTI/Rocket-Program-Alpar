@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="habitosApp">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diario de Habitos e Humor</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body ng-controller="HabitosController as vm">
+    <main class="container py-4 py-md-5">
+        <header class="hero mb-4 mb-md-5">
+            <div class="hero__content">
+                <h1 class="display-5 fw-bold mb-2">Diario de Habitos e Humor</h1>
+                <p class="lead mb-0">Registre seu dia, acompanhe seu humor e veja sua evolucao.</p>
+            </div>
+            <div class="hero__badge text-center">
+                <small class="d-block text-uppercase fw-semibold">Sequencia atual</small>
+                <span class="fs-2 fw-bold">{{ vm.metrics.currentStreak }} dias</span>
+            </div>
+        </header>
+
+        <!-- Formulario principal: humor + habitos do dia -->
+        <section class="row g-4 mb-4 mb-md-5">
+            <div class="col-12 col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Registro de Humor</h2>
+                        <p class="small text-success fw-semibold mb-2" ng-if="vm.editingId">Editando registro
+                            selecionado</p>
+
+                        <form ng-submit="vm.saveMood()" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="moodDate">Data</label>
+                                <input class="form-control" id="moodDate" type="date" ng-model="vm.form.date"
+                                    required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="moodLevel">Nivel de humor</label>
+                                <select class="form-select" id="moodLevel" ng-model="vm.form.moodLevel"
+                                    ng-options="level.value as level.label for level in vm.moodLevels" required>
+                                    <option value="">Selecione</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="observation">Observacao (opcional)</label>
+                                <textarea class="form-control" id="observation" rows="3" maxlength="240"
+                                    ng-model="vm.form.observation" placeholder="Como foi seu dia?"></textarea>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ vm.editingId ? 'Atualizar registro' : 'Salvar humor do dia' }}
+                                </button>
+                                <button class="btn btn-outline-secondary" type="button" ng-if="vm.editingId"
+                                    ng-click="vm.cancelEdit()">
+                                    Cancelar edicao
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">Registro de Habitos</h2>
+
+                        <form ng-submit="vm.addHabit()" class="mb-3" novalidate>
+                            <label class="form-label" for="habitName">Nome do habito</label>
+                            <div class="input-group">
+                                <input class="form-control" id="habitName" type="text" ng-model="vm.habitName"
+                                    placeholder="Ex: Leitura" maxlength="80" />
+                                <button class="btn btn-outline-primary" type="submit">Adicionar</button>
+                            </div>
+                        </form>
+
+                        <p class="small text-muted mb-2">Marque os habitos concluidos para esta data:</p>
+
+                        <div class="habit-list" ng-if="vm.form.habits.length">
+                            <div class="form-check habit-item" ng-repeat="habit in vm.form.habits track by $index">
+                                <input class="form-check-input" type="checkbox" id="habit-{{$index}}"
+                                    ng-model="habit.done" />
+                                <label class="form-check-label" for="habit-{{$index}}">{{ habit.name }}</label>
+                                <button class="btn btn-sm btn-link text-danger text-decoration-none" type="button"
+                                    ng-click="vm.removeHabit($index)">
+                                    remover
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text-muted mb-0" ng-if="!vm.form.habits.length">Nenhum habito adicionado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resumo rapido para leitura dos resultados -->
+        <section class="row g-3 mb-4">
+            <div class="col-12 col-md-4">
+                <div class="metric-card">
+                    <small>Total de registros</small>
+                    <strong>{{ vm.metrics.totalRecords }}</strong>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="metric-card">
+                    <small>Media de humor</small>
+                    <strong>{{ vm.metrics.avgMood | number:1 }}</strong>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="metric-card">
+                    <small>Conclusao de habitos</small>
+                    <strong>{{ vm.metrics.habitCompletion }}%</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grafico simples em barras (sem biblioteca externa) -->
+        <section class="card shadow-sm mb-3">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Ultimos 7 dias</h2>
+                <p class="small text-muted mb-3">Barras simples para apresentar a evolucao de humor e habitos.</p>
+
+                <div ng-if="!vm.chartRows.length" class="alert alert-light border mb-0">
+                    Sem dados para o grafico.
+                </div>
+
+                <div class="mini-chart" ng-if="vm.chartRows.length">
+                    <div class="mini-chart__row" ng-repeat="day in vm.chartRows track by day.dateKey">
+                        <div class="mini-chart__date">{{ day.label }}</div>
+                        <div>
+                            <small class="text-muted">Humor {{ day.moodLevel }}/4</small>
+                            <div class="progress mini-chart__bar">
+                                <div class="progress-bar bg-info" role="progressbar" aria-label="Barra de humor"
+                                    title="Humor do dia" ng-style="{ width: day.moodPercent + '%' }"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <small class="text-muted">Habitos {{ day.habitPercent }}%</small>
+                            <div class="progress mini-chart__bar">
+                                <div class="progress-bar bg-success" role="progressbar" aria-label="Barra de habitos"
+                                    title="Conclusao de habitos do dia" ng-style="{ width: day.habitPercent + '%' }">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtros por data e por nivel de humor -->
+        <section class="card shadow-sm mb-3">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Filtros</h2>
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <label class="form-label" for="filterDate">Filtrar por data</label>
+                        <input class="form-control" id="filterDate" type="date" ng-model="vm.filters.date"
+                            ng-change="vm.applyFilters()" />
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label class="form-label" for="filterMood">Filtrar por humor</label>
+                        <select class="form-select" id="filterMood" ng-model="vm.filters.moodLevel"
+                            ng-options="level.value as level.label for level in vm.moodLevels"
+                            ng-change="vm.applyFilters()">
+                            <option value="">Todos</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex align-items-end">
+                        <button class="btn btn-outline-secondary w-100" type="button" ng-click="vm.clearFilters()">
+                            Limpar filtros
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista final com acoes de editar e excluir -->
+        <section class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-3">Lista de Registros</h2>
+
+                <div class="alert alert-info mb-0" ng-if="!vm.filteredRecords.length">
+                    Nenhum registro encontrado para os filtros aplicados.
+                </div>
+
+                <div class="table-responsive" ng-if="vm.filteredRecords.length">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Humor</th>
+                                <th scope="col">Habitos</th>
+                                <th scope="col">Observacao</th>
+                                <th scope="col" class="text-end">Acoes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="record in vm.filteredRecords track by record.id">
+                                <td>{{ record.date | date:'dd/MM/yyyy' }}</td>
+                                <td>{{ vm.getMoodEmoji(record.moodLevel) }} {{ vm.getMoodLabel(record.moodLevel) }}</td>
+                                <td>
+                                    <ul class="mb-0 list-unstyled">
+                                        <li ng-repeat="habit in record.habits track by $index">
+                                            <span ng-class="{'text-decoration-line-through text-muted': !habit.done}">
+                                                {{ habit.done ? '✅' : '⬜' }} {{ habit.name }}
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>{{ record.observation || '-' }}</td>
+                                <td class="text-end">
+                                    <button class="btn btn-sm btn-outline-primary me-2" type="button"
+                                        ng-click="vm.startEdit(record.id)">
+                                        Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" type="button"
+                                        ng-click="vm.deleteRecord(record.id)">
+                                        Excluir
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast-wrap" aria-live="polite" aria-atomic="true">
+        <div class="custom-toast" ng-class="{'show': vm.toast.show, 'error': vm.toast.type === 'error'}">
+            {{ vm.toast.message }}
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
